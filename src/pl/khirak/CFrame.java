@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.Timer;
+//import java.util.Timer;
+//import java.util.TimerTask;
 
 public class CFrame extends JPanel implements ActionListener {
 
@@ -14,7 +17,7 @@ public class CFrame extends JPanel implements ActionListener {
     Light light = new Light();
     ArrayList<Light> lights = new ArrayList<>();
 
-    int amount = 10;
+    int amount = 50;
 
     public static void main(String[] arg){
 
@@ -50,11 +53,12 @@ public class CFrame extends JPanel implements ActionListener {
         }*/
 
         g.setColor(Color.black);
-        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 30);
+        g.drawString("Cars: "+ cars.size(), 630, 30);
+        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 50);
 //        g.drawString(String.valueOf((cars.size())), 630, 300);
         for(int i = 0; i < amount; i++){
             g.setColor(Color.black);
-            g.drawString(i+".  "+String.valueOf(cars.get(i).x)+" "+String.valueOf(cars.get(i).y),630,60+15*i);
+            g.drawString(i+".  "+ (int) cars.get(i).x +" "+ (int) cars.get(i).y,630,80+15*i);
         }
 
     }
@@ -77,8 +81,9 @@ public class CFrame extends JPanel implements ActionListener {
         }
 
         Timer t = new Timer(17, this);
-
         t.restart();
+//        Timer t = new Timer();
+//        t.schedule(new addCar(), 1000);
 
 //        Timer t2 = new Timer(1000, this);
 //        cars.add(new Car());
@@ -88,8 +93,17 @@ public class CFrame extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 
+//    class addCar extends TimerTask{
+//        public void run(){
+//            cars.add(new Car());
+//        }
+//    }
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
+//        cars.add(new Car());
     }
 }

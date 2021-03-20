@@ -4,25 +4,25 @@ import java.awt.*;
 
 public class Car {
 
-    int x, y;
+    double x, y;
 //    int vx, vy;
 //    int ax, ay;
-    int px, py;
+    double px, py;
 //    int kolor = 0;
     int size;
-    int speed;
+    double speed;
     double color_r, color_g, color_b;
 
     public Car() {
 
         size = 15;
 
-        int speed_max = 6;
-        int speed_min = 4;
-        speed = (int)((Math.random()*(speed_max-speed_min+1))+speed_min);
+        double speed_max = 3;
+        double speed_min = 1.5;
+        speed = ((Math.random()*(speed_max-speed_min))+speed_min);
 
-        x = (int) (Math.random() * (600-size));
-        y = (int) (Math.random() * (565-size));
+        x = (int)(Math.random()*(600-size));
+        y = (int)(Math.random()*(565-size));
 
 //        color_r = (int)(Math.random()*255+0);
 //        color_g = (int)(Math.random()*255+0);
@@ -55,14 +55,14 @@ public class Car {
 //        color_r = Math.sqrt(Math.pow(px, 2) + Math.pow(py, 2)) * 255 / 10 * size / 20;
 //        color_g = 0;
 //        color_b = (255 - color_r) * size / 20;
-        color_b = (255/((double)speed_max-(double)speed_min))*(speed_max-speed);
+        color_b = (255.0/(speed_max-speed_min))*(speed_max-speed);
         color_g = 0;
-        color_r = (255 - color_b);
+        color_r = (255 - (int)color_b);
     }
 
     public void collision(Car c){
-        Rectangle c1 = new Rectangle(c.x, c.y, size, size);
-        Rectangle c2 = new Rectangle(c.x, c.y, size, size);
+        Rectangle c1 = new Rectangle((int)c.x, (int)c.y, size, size);
+        Rectangle c2 = new Rectangle((int)c.x, (int)c.y, size, size);
         if(c1.intersects(c2)){
             c1.x = 0;
             c1.y = 0;
@@ -73,7 +73,7 @@ public class Car {
 
     public void paint(Graphics g) {
 
-        g.setColor(new Color((int) color_r, (int) color_g, (int) color_b));
+        g.setColor(new Color((int)color_r,(int)color_g,(int) color_b));
 
         x = x + px;
         y = y + py;
@@ -85,7 +85,7 @@ public class Car {
             py = py * (-1);
         }
 
-        g.fillRect(x, y, size, size);
+        g.fillRect((int)x, (int)y, size, size);
 
         g.setColor(Color.black);
         g.drawLine(600, 0, 600, 600);

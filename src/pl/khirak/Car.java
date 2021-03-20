@@ -16,7 +16,7 @@ public class Car {
     public Car() {
 
         size = 15;
-        speed = (int)((Math.random()*(7-3+1))+3);
+        speed = (int)((Math.random()*(6-4+1))+4);
 
         x = (int) (Math.random() * (600-size));
         y = (int) (Math.random() * (565-size));

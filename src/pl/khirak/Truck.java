@@ -5,10 +5,10 @@ import java.awt.*;
 public class Truck {
 
     int x, y;
-    //    int vx, vy;
+//    int vx, vy;
 //    int ax, ay;
     int px, py;
-    //    int kolor = 0;
+//    int kolor = 0;
     int size;
     int speed;
     double color_r, color_g, color_b;

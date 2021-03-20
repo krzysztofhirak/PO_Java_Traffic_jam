@@ -1,6 +1,6 @@
 package pl.khirak;
 
-import java.awt.Graphics;
+import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +10,10 @@ public class CFrame extends JPanel implements ActionListener {
 
     Car car = new Car();
     ArrayList<Car> cars = new ArrayList<>();
+
+    Light light = new Light();
+    ArrayList<Light> lights = new ArrayList<>();
+
     int amount = 10;
 
     public static void main(String[] arg){
@@ -23,8 +27,15 @@ public class CFrame extends JPanel implements ActionListener {
         for(Car p: cars){
             p.paint(g);
         }
+
+        for(Light q: lights){
+            q.paint(g);
+        }
+
+        g.setColor(Color.black);
         g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 30);
         for(int i = 0; i < amount; i++){
+            g.setColor(Color.black);
             g.drawString(i+".  "+String.valueOf(cars.get(i).x)+" "+String.valueOf(cars.get(i).y),630,60+15*i);
         }
     }
@@ -39,6 +50,10 @@ public class CFrame extends JPanel implements ActionListener {
 
         for(int i = 0; i < amount; i++){
             cars.add(new Car());
+        }
+
+        for(int i = 0; i < 4; i++){
+            lights.add(new Light());
         }
 
         Timer t = new Timer(17, this);

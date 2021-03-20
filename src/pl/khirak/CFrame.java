@@ -18,8 +18,14 @@ public class CFrame extends JPanel implements ActionListener {
 
     public static void main(String[] arg){
 
-        CFrame c = new CFrame();
+        CFrame cframe = new CFrame();
+        cframe.setBackground(new Color(213, 255, 248));
     }
+
+//    public boolean isClose(){
+//
+//        return false;
+//    }
 
     public void paint(Graphics g){
 
@@ -32,12 +38,25 @@ public class CFrame extends JPanel implements ActionListener {
             q.paint(g);
         }
 
+        /*for(int i = 0; i < cars.size()-1; i++){
+            for(int j = i+1; i < cars.size(); j++){
+                cars.get(i).collision(cars.get(j));
+            }
+        }*/
+        /*for(int i = cars.size()-2; i >= 0; i++){
+            for(int j = cars.size()-1; i > 0; j++){
+                cars.get(i).collision(cars.get(j));
+            }
+        }*/
+
         g.setColor(Color.black);
         g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 30);
+//        g.drawString(String.valueOf((cars.size())), 630, 300);
         for(int i = 0; i < amount; i++){
             g.setColor(Color.black);
             g.drawString(i+".  "+String.valueOf(cars.get(i).x)+" "+String.valueOf(cars.get(i).y),630,60+15*i);
         }
+
     }
 
     public CFrame(){
@@ -45,6 +64,7 @@ public class CFrame extends JPanel implements ActionListener {
         JFrame frame = new JFrame("Symulacja");
         frame.setSize(900,600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBackground(Color.cyan);
         frame.setResizable(false);
 //        frame.setBackground(new Color(178, 255, 255));
 

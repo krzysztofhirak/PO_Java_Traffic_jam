@@ -16,7 +16,10 @@ public class Car {
     public Car() {
 
         size = 15;
-        speed = (int)((Math.random()*(6-4+1))+4);
+
+        int speed_max = 6;
+        int speed_min = 4;
+        speed = (int)((Math.random()*(speed_max-speed_min+1))+speed_min);
 
         x = (int) (Math.random() * (600-size));
         y = (int) (Math.random() * (565-size));
@@ -49,9 +52,23 @@ public class Car {
             py = -speed;
         }
 
-        color_r = Math.sqrt(Math.pow(px, 2) + Math.pow(py, 2)) * 255 / 10 * size / 20;
+//        color_r = Math.sqrt(Math.pow(px, 2) + Math.pow(py, 2)) * 255 / 10 * size / 20;
+//        color_g = 0;
+//        color_b = (255 - color_r) * size / 20;
+        color_b = (255/((double)speed_max-(double)speed_min))*(speed_max-speed);
         color_g = 0;
-        color_b = (255 - color_r) * size / 20;
+        color_r = (255 - color_b);
+    }
+
+    public void collision(Car c){
+        Rectangle c1 = new Rectangle(c.x, c.y, size, size);
+        Rectangle c2 = new Rectangle(c.x, c.y, size, size);
+        if(c1.intersects(c2)){
+            c1.x = 0;
+            c1.y = 0;
+            c2.x = 0;
+            c2.y = 0;
+        }
     }
 
     public void paint(Graphics g) {
@@ -61,10 +78,10 @@ public class Car {
         x = x + px;
         y = y + py;
 
-        if (x < 0 || x >= 600 - size) {
+        if (x < 0 || x >= 600 - size - px) {
             px = px * (-1);
         }
-        if (y < 0 || y >= 565 - size) {
+        if (y < 0 || y >= 565 - size - py) {
             py = py * (-1);
         }
 

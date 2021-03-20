@@ -5,8 +5,9 @@ import java.awt.*;
 public class Light {
 
     int color = (int)(Math.random()*3);
-    int x = (int)(Math.random()*(600+1)+0);
-    int y = (int)(Math.random()*(600+1)+0);
+    int size = 15;
+    int x = (int)(Math.random()*(600 - size));
+    int y = (int)(Math.random()*(565 - size));
 
     public void paint(Graphics g) {
 
@@ -23,7 +24,7 @@ public class Light {
         }
 
 
-        g.fillOval(x, y, 15, 15);
+        g.fillOval(x, y, size, size);
 //        g.setColor(Color.black);
     }
 }

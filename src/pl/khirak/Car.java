@@ -5,17 +5,18 @@ import java.awt.*;
 public class Car {
 
     int x, y;
-    //    int vx, vy;
+//    int vx, vy;
 //    int ax, ay;
     int px, py;
-    //    int kolor = 0;
+//    int kolor = 0;
     int size;
-    int speed = 5;
+    int speed;
     double color_r, color_g, color_b;
 
     public Car() {
 
         size = 15;
+        speed = (int)((Math.random()*(7-3+1))+3);
 
         x = (int) (Math.random() * (600-size));
         y = (int) (Math.random() * (565-size));

@@ -10,7 +10,7 @@ public class CFrame extends JPanel implements ActionListener {
 
     Car car = new Car();
     ArrayList<Car> cars = new ArrayList<>();
-    int amount = 2;
+    int amount = 10;
 
     public static void main(String[] arg){
 

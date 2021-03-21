@@ -17,13 +17,16 @@ public class CFrame extends JPanel implements ActionListener {
     Light light = new Light();
     ArrayList<Light> lights = new ArrayList<>();
 
-    int amount = 50;
+    Car_Fov carfov = new Car_Fov();
+    ArrayList<Car_Fov> carfovs = new ArrayList<>();
+
+    int amount = 10;
     double time = 0;
 
     public static void main(String[] arg){
 
         CFrame cframe = new CFrame();
-        cframe.setBackground(new Color(213, 255, 248));
+        cframe.setBackground(new Color(252, 250, 248));
     }
 
 //    public boolean isClose(){
@@ -34,12 +37,17 @@ public class CFrame extends JPanel implements ActionListener {
     public void paint(Graphics g){
 
         super.paintComponent(g);
+
         for(Car p: cars){
             p.paint(g);
         }
 
         for(Light q: lights){
             q.paint(g);
+        }
+
+        for(Car_Fov r: carfovs){
+            r.paint(g);
         }
 
         for(int i = 0; i < amount-1; i++){
@@ -82,6 +90,10 @@ public class CFrame extends JPanel implements ActionListener {
 
         for(int i = 0; i < 4; i++){
             lights.add(new Light());
+        }
+
+        for(int i = 0; i < amount; i++){
+            carfovs.add(new Car_Fov());
         }
 
         Timer t = new Timer(17, this);

@@ -20,13 +20,13 @@ public class CFrame extends JPanel implements ActionListener {
     Car_Fov carfov = new Car_Fov();
     ArrayList<Car_Fov> carfovs = new ArrayList<>();
 
-    int amount = 10;
+    int amount = 30;
     double time = 0;
 
     public static void main(String[] arg){
 
         CFrame cframe = new CFrame();
-        cframe.setBackground(new Color(252, 250, 248));
+        cframe.setBackground(new Color(220, 227, 238));
     }
 
 //    public boolean isClose(){
@@ -62,8 +62,13 @@ public class CFrame extends JPanel implements ActionListener {
         }*/
 
         g.setColor(Color.black);
+        g.drawLine(600, 0, 600, 600);
+        g.setColor(new Color(200, 207, 218));
+        g.fillRect(601, 0, 600,600);
+        g.setColor(Color.black);
         g.drawString("Cars: "+ cars.size() + "   Time: " + time, 630, 30);
         g.drawString("Colisions: " + car.colisions, 630, 45);
+//        g.drawString("Car_Fov.x: " + (int)carfov.x, 630, 60);
 //        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 50);
         for(int i = 0; i < amount; i++){
             g.setColor(Color.black);
@@ -86,14 +91,11 @@ public class CFrame extends JPanel implements ActionListener {
 
         for(int i = 0; i < amount; i++){
             cars.add(new Car());
+            carfovs.add(new Car_Fov());
         }
 
         for(int i = 0; i < 4; i++){
             lights.add(new Light());
-        }
-
-        for(int i = 0; i < amount; i++){
-            carfovs.add(new Car_Fov());
         }
 
         Timer t = new Timer(17, this);

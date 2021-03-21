@@ -15,7 +15,7 @@ public class Car_Fov {
 
     public Car_Fov(){
 
-        x = car.x - vision;
+        x = car.x - vision + Math.random()-1;
         y = car.y - vision;
         size = 2*vision + car.size;
 //        vx = car.vx;
@@ -25,7 +25,7 @@ public class Car_Fov {
 
     public void paint(Graphics g) {
 
-        g.setColor(Color.gray);
+        g.setColor(new Color(160,160,160));
         g.drawRect((int)x, (int)y, size, size);
     }
 }

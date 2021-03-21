@@ -11,13 +11,11 @@ public class Car {
     int size;
     double speed;
     double color_r, color_g, color_b;
-    int colisions = 0;
-
-//    CFrame cframe = new CFrame();
+    int colisions;
 
     public Car() {
 
-        size = 15;
+        size = 15; // 15 is best
 
 //        ax = vx / cframe.time;
 //        ay = vy / cframe.time;
@@ -90,8 +88,5 @@ public class Car {
         }
 
         g.fillRect((int)x, (int)y, size, size);
-
-        g.setColor(Color.black);
-        g.drawLine(600, 0, 600, 600);
     }
 }

@@ -5,17 +5,23 @@ import java.awt.*;
 public class Car {
 
     double x, y;
-//    int vx, vy;
-//    int ax, ay;
-    double px, py;
+    double ax, ay;
+    double vx, vy;
 //    int kolor = 0;
     int size;
     double speed;
     double color_r, color_g, color_b;
 
+//    CFrame cframe = new CFrame();
+
     public Car() {
 
         size = 15;
+
+//        ax = vx / cframe.time;
+//        ay = vy / cframe.time;
+//        ax = vx / 0.017;
+//        ay = vy / 0.017;
 
         double speed_max = 3;
         double speed_min = 1.5;
@@ -24,32 +30,21 @@ public class Car {
         x = (int)(Math.random()*(600-size));
         y = (int)(Math.random()*(565-size));
 
-//        color_r = (int)(Math.random()*255+0);
-//        color_g = (int)(Math.random()*255+0);
-//        color_b = (int)(Math.random()*255+0);
-
-//        if(Math.random()<.1){
-//            kolor = 1;
-//        }
-
-//        vx = (int)(Math.random()*(10+1)+-5);
-//        vy = (int)(Math.random()*(10+1)+-5);
-
         if(Math.random()<.25){
-            px = -speed;
-            py = 0;
+            vx = -speed;
+            vy = 0;
         }
         else if(Math.random()<.5){
-            px = 0;
-            py = speed;
+            vx = 0;
+            vy = speed;
         }
         else if(Math.random()<.75){
-            px = speed;
-            py = 0;
+            vx = speed;
+            vy = 0;
         }
         else{
-            px = 0;
-            py = -speed;
+            vx = 0;
+            vy = -speed;
         }
 
 //        color_r = Math.sqrt(Math.pow(px, 2) + Math.pow(py, 2)) * 255 / 10 * size / 20;
@@ -75,14 +70,14 @@ public class Car {
 
         g.setColor(new Color((int)color_r,(int)color_g,(int) color_b));
 
-        x = x + px;
-        y = y + py;
+        x = x + vx;
+        y = y + vy;
 
-        if (x < 0 || x >= 600 - size - px) {
-            px = px * (-1);
+        if (x < 0 || x >= 600 - size - vx) {
+            vx = vx * (-1);
         }
-        if (y < 0 || y >= 565 - size - py) {
-            py = py * (-1);
+        if (y < 0 || y >= 565 - size - vy) {
+            vy = vy * (-1);
         }
 
         g.fillRect((int)x, (int)y, size, size);

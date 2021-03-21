@@ -18,6 +18,7 @@ public class CFrame extends JPanel implements ActionListener {
     ArrayList<Light> lights = new ArrayList<>();
 
     int amount = 50;
+    double time = 0;
 
     public static void main(String[] arg){
 
@@ -53,12 +54,14 @@ public class CFrame extends JPanel implements ActionListener {
         }*/
 
         g.setColor(Color.black);
-        g.drawString("Cars: "+ cars.size(), 630, 30);
-        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 50);
-//        g.drawString(String.valueOf((cars.size())), 630, 300);
+        g.drawString("Cars: "+ cars.size() + "   Time: " + time, 630, 30);
+//        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 50);
         for(int i = 0; i < amount; i++){
             g.setColor(Color.black);
-            g.drawString(i+".  "+ (int) cars.get(i).x +" "+ (int) cars.get(i).y,630,80+15*i);
+//            g.drawString(i+".  "+ (int) cars.get(i).x +" "+ (int) cars.get(i).y,630,80+15*i);
+            g.drawString(String.format("%3d: %3d, %3d",i, (int)cars.get(i).x, (int)cars.get(i).y), 630,80+15*i);
+            g.setColor(new Color((int)cars.get(i).color_r, (int)cars.get(i).color_g, (int)cars.get(i).color_b));
+            g.fillRect(710, 72+15*i, 10,10);
         }
 
     }
@@ -104,6 +107,8 @@ public class CFrame extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
+        time++;
 //        cars.add(new Car());
+//        amount++;
     }
 }

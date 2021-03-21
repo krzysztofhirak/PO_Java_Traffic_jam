@@ -11,6 +11,7 @@ public class Car {
     int size;
     double speed;
     double color_r, color_g, color_b;
+    int colisions = 0;
 
 //    CFrame cframe = new CFrame();
 
@@ -55,15 +56,21 @@ public class Car {
         color_r = (255 - (int)color_b);
     }
 
-    public void collision(Car c){
-        Rectangle c1 = new Rectangle((int)c.x, (int)c.y, size, size);
-        Rectangle c2 = new Rectangle((int)c.x, (int)c.y, size, size);
+    public void collision(Car car1, Car car2){
+        Rectangle c1 = new Rectangle((int)car1.x, (int)car1.y, size, size);
+//        Rectangle c2 = new Rectangle((int)this.x, (int)this.y, size, size);
+        Rectangle c2 = new Rectangle((int)car2.x, (int)car2.y, size, size);
         if(c1.intersects(c2)){
 //            g.setColor(Color.black);
-            c1.x = 0;
-            c1.y = 0;
-            c2.x = 0;
-            c2.y = 0;
+//            c1.x = 0;
+//            c1.y = 0;
+//            c2.x = 0;
+//            c2.y = 0;
+            car1.vx = 0;
+            car1.vy = 0;
+            car2.vx = 0;
+            car2.vy = 0;
+            colisions++;
         }
     }
 

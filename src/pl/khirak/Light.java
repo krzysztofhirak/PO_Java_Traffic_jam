@@ -27,6 +27,9 @@ public class Light {
 
 
         g.fillOval(x, y, size, size);
+        g.setColor(Color.black);
+        g.drawArc(x, y, size, size, 0, 360);
+
 //        g.setColor(Color.black);
     }
 }

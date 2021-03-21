@@ -44,7 +44,7 @@ public class CFrame extends JPanel implements ActionListener {
 
         for(int i = 0; i < amount-1; i++){
             for(int j = i+1; j < amount; j++){
-                cars.get(i).collision(cars.get(j));
+                cars.get(i).collision(cars.get(i), cars.get(j));
             }
         }
         /*for(int i = cars.size()-2; i >= 0; i++){
@@ -55,6 +55,7 @@ public class CFrame extends JPanel implements ActionListener {
 
         g.setColor(Color.black);
         g.drawString("Cars: "+ cars.size() + "   Time: " + time, 630, 30);
+        g.drawString("Colisions: " + car.colisions, 630, 45);
 //        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 50);
         for(int i = 0; i < amount; i++){
             g.setColor(Color.black);

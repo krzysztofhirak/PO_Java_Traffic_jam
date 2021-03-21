@@ -42,11 +42,11 @@ public class CFrame extends JPanel implements ActionListener {
             q.paint(g);
         }
 
-        /*for(int i = 0; i < cars.size()-1; i++){
-            for(int j = i+1; i < cars.size(); j++){
+        for(int i = 0; i < amount-1; i++){
+            for(int j = i+1; j < amount; j++){
                 cars.get(i).collision(cars.get(j));
             }
-        }*/
+        }
         /*for(int i = cars.size()-2; i >= 0; i++){
             for(int j = cars.size()-1; i > 0; j++){
                 cars.get(i).collision(cars.get(j));

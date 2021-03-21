@@ -59,6 +59,7 @@ public class Car {
         Rectangle c1 = new Rectangle((int)c.x, (int)c.y, size, size);
         Rectangle c2 = new Rectangle((int)c.x, (int)c.y, size, size);
         if(c1.intersects(c2)){
+//            g.setColor(Color.black);
             c1.x = 0;
             c1.y = 0;
             c2.x = 0;

@@ -10,25 +10,28 @@ public class Car_Fov {
 
     double x, y;
 //    double vx, vy;
-    int size;
-    int vision = 30;
-    boolean pause = false;
-    double carx = 50, cary = 70;
+    int vision = 10;
+    int size = 2 * vision + car.size;
 
     public Car_Fov(){
 
-//        x = x - vision;
-//        y = y - vision;
-//        size = 2*vision + car.size;
-//        vx = car.vx;
-//        vy = car.vy;
+    }
+
+    public void collision(Car_Fov car1, Car_Fov car2, Car car3, Car car4) {
+        Rectangle c1 = new Rectangle((int)car1.x, (int)car1.y, size, size);
+        Rectangle c2 = new Rectangle((int)car2.x, (int)car2.y, size, size);
+        if(c1.intersects(c2)){
+            car3.vx = -car3.vx;
+            car3.vy = -car3.vy;
+            car4.vx = -car3.vx;
+            car4.vy = -car3.vy;
+        }
     }
 
     public void paint(Graphics g) {
 
         x = x - vision;
         y = y - vision;
-        size = 2 * vision + car.size;
 
         g.setColor(new Color(160,160,160));
         g.drawRect((int)x, (int)y, size, size);

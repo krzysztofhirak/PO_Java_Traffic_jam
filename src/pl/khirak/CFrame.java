@@ -20,7 +20,7 @@ public class CFrame extends JPanel implements ActionListener {
     Car_Fov carfov = new Car_Fov();
     ArrayList<Car_Fov> carfovs = new ArrayList<>();
 
-    int amount = 30;
+    int amount = 20;
     double time = 0;
 
     public static void main(String[] arg){
@@ -52,6 +52,13 @@ public class CFrame extends JPanel implements ActionListener {
             }
         }
 
+        for(int i = 0; i < amount-1; i++){
+            for(int j = i+1; j < amount; j++){
+//                carfovs.get(i).collision(carfovs.get(i), carfovs.get(j));
+                carfovs.get(i).collision(carfovs.get(i), carfovs.get(j), cars.get(i), cars.get(j));
+            }
+        }
+
         for(int i = 0; i < amount; i++){
             carfovs.get(i).x = cars.get(i).x;
             carfovs.get(i).y = cars.get(i).y;
@@ -64,7 +71,7 @@ public class CFrame extends JPanel implements ActionListener {
         g.setColor(Color.black);
         g.drawString("Cars: "+ cars.size() + "   Time: " + time, 630, 30);
         g.drawString("Colisions: " + car.colisions, 630, 45);
-        g.drawString("Współrzędne: " + carfovs.get(0).x + "   " + cars.get(0).x, 630, 60);
+//        g.drawString("Współrzędne: " + (int)carfovs.get(0).x + " / " + (int)cars.get(0).x + "   " + (int)carfovs.get(0).y + " / " + (int)cars.get(0).y, 630, 60);
 //        g.drawString("Car_Fov.x: " + (int)carfov.x, 630, 60);
 //        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 50);
         for(int i = 0; i < amount; i++){

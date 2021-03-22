@@ -29,11 +29,6 @@ public class CFrame extends JPanel implements ActionListener {
         cframe.setBackground(new Color(220, 227, 238));
     }
 
-//    public boolean isClose(){
-//
-//        return false;
-//    }
-
     public void paint(Graphics g){
 
         super.paintComponent(g);
@@ -50,16 +45,17 @@ public class CFrame extends JPanel implements ActionListener {
             r.paint(g);
         }
 
+
         for(int i = 0; i < amount-1; i++){
             for(int j = i+1; j < amount; j++){
                 cars.get(i).collision(cars.get(i), cars.get(j));
             }
         }
-        /*for(int i = cars.size()-2; i >= 0; i++){
-            for(int j = cars.size()-1; i > 0; j++){
-                cars.get(i).collision(cars.get(j));
-            }
-        }*/
+
+        for(int i = 0; i < amount; i++){
+            carfovs.get(i).x = cars.get(i).x;
+            carfovs.get(i).y = cars.get(i).y;
+        }
 
         g.setColor(Color.black);
         g.drawLine(600, 0, 600, 600);
@@ -68,6 +64,7 @@ public class CFrame extends JPanel implements ActionListener {
         g.setColor(Color.black);
         g.drawString("Cars: "+ cars.size() + "   Time: " + time, 630, 30);
         g.drawString("Colisions: " + car.colisions, 630, 45);
+        g.drawString("Współrzędne: " + carfovs.get(0).x + "   " + cars.get(0).x, 630, 60);
 //        g.drawString("Car_Fov.x: " + (int)carfov.x, 630, 60);
 //        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 50);
         for(int i = 0; i < amount; i++){
@@ -91,7 +88,16 @@ public class CFrame extends JPanel implements ActionListener {
 
         for(int i = 0; i < amount; i++){
             cars.add(new Car());
+            carfov.cars.add(new Car());
             carfovs.add(new Car_Fov());
+            carfovs.get(i).x = cars.get(i).x;
+            carfovs.get(i).y = cars.get(i).y;
+//            carfov.cars.get(i).x = cars.get(i).x;
+//            carfov.cars.get(i).y = cars.get(i).y;
+
+//            carfov.cars.add(cars.get(i));
+//            carfov.cars.add(new Car());
+//            carfovs.add(new Car_Fov());
         }
 
         for(int i = 0; i < 4; i++){

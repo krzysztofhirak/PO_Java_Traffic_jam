@@ -26,20 +26,17 @@ public class Car_Fov {
 //                car3.vy = -car3.vy;
 //                car4.vx = -car4.vx;
 //                car4.vy = -car4.vy;
-                car3.vx = 0;
-                car3.vy = 0;
-                car4.vx = 0;
-                car4.vy = 0;
+                car3.vx = car3.vx/1.1;
+                car3.vy = car3.vy/1.1;
+                car4.vx = car4.vx/1.1;
+                car4.vy = car4.vy/1.1;
 
-//                car3.ax = -3;
-//                car3.ay = -3;
-//                car4.ax = -3;
-//                car4.ay = -3;
-
-//                t = 0;
-            }
-            else{
-//                t++;
+                if(car3.vx < 0.1){
+                    car3.vx = 0;
+                }
+                if(car4.vx < 0.1){
+                    car4.vx = 0;
+                }
             }
         }
     }
@@ -52,6 +49,6 @@ public class Car_Fov {
         y = y - vision;
 
         g.setColor(new Color(160,160,160));
-        g.drawRect((int)x, (int)y, size, size);
+//        g.drawRect((int)x, (int)y, size, size);
     }
 }

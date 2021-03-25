@@ -13,6 +13,9 @@ public class Car {
     double color_r, color_g, color_b;
     int colisions;
 
+    double speed_max = 3;
+    double speed_min = 1.5;
+
     public Car() {
 
         size = 15; // 15 is best
@@ -22,8 +25,6 @@ public class Car {
 //        ax = vx / 0.017;
 //        ay = vy / 0.017;
 
-        double speed_max = 30;
-        double speed_min = 1.5;
         speed = ((Math.random()*(speed_max-speed_min))+speed_min);
 
         x = (int)(Math.random()*(600-size));

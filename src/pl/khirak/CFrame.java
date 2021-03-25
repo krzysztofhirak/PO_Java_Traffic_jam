@@ -35,6 +35,11 @@ public class CFrame extends JPanel implements ActionListener {
 
         super.paintComponent(g);
 
+        for(int i = 0; i < amount; i++){
+            carfovs.get(i).x = cars.get(i).x;
+            carfovs.get(i).y = cars.get(i).y;
+        }
+
         for(Car p: cars){
             p.paint(g);
         }
@@ -60,11 +65,6 @@ public class CFrame extends JPanel implements ActionListener {
             for(int j = i+1; j < amount; j++){
                 carfovs.get(i).collision(carfovs.get(i), carfovs.get(j), cars.get(i), cars.get(j), timefromcollision);
             }
-        }
-
-        for(int i = 0; i < amount; i++){
-            carfovs.get(i).x = cars.get(i).x;
-            carfovs.get(i).y = cars.get(i).y;
         }
 
         g.setColor(Color.black);
@@ -100,8 +100,8 @@ public class CFrame extends JPanel implements ActionListener {
             cars.add(new Car());
             carfov.cars.add(new Car());
             carfovs.add(new Car_Fov());
-            carfovs.get(i).x = cars.get(i).x;
-            carfovs.get(i).y = cars.get(i).y;
+//            carfovs.get(i).x = cars.get(i).x;
+//            carfovs.get(i).y = cars.get(i).y;
 //            carfov.cars.get(i).x = cars.get(i).x;
 //            carfov.cars.get(i).y = cars.get(i).y;
 
@@ -114,7 +114,7 @@ public class CFrame extends JPanel implements ActionListener {
             lights.add(new Light());
         }
 
-        Timer t = new Timer(170, this);
+        Timer t = new Timer(17, this);
         t.restart();
 //        Timer t = new Timer();
 //        t.schedule(new addCar(), 1000);

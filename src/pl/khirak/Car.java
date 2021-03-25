@@ -22,7 +22,7 @@ public class Car {
 //        ax = vx / 0.017;
 //        ay = vy / 0.017;
 
-        double speed_max = 3;
+        double speed_max = 30;
         double speed_min = 1.5;
         speed = ((Math.random()*(speed_max-speed_min))+speed_min);
 
@@ -49,7 +49,7 @@ public class Car {
 //        color_r = Math.sqrt(Math.pow(px, 2) + Math.pow(py, 2)) * 255 / 10 * size / 20;
 //        color_g = 0;
 //        color_b = (255 - color_r) * size / 20;
-        color_b = (255.0/(speed_max-speed_min))*(speed_max-speed);
+        color_b = (255.0/(speed_max-speed_min))*(speed_max-Math.abs(vx+vy));
         color_g = 0;
         color_r = (255 - (int)color_b);
     }

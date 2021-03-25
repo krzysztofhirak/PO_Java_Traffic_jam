@@ -14,13 +14,15 @@ public class CFrame extends JPanel implements ActionListener {
     Car car = new Car();
     ArrayList<Car> cars = new ArrayList<>();
 
-    Light light = new Light();
+//    Light light = new Light();
     ArrayList<Light> lights = new ArrayList<>();
 
     Car_Fov carfov = new Car_Fov();
     ArrayList<Car_Fov> carfovs = new ArrayList<>();
 
-    int amount = 20;
+    Map_1 map1 = new Map_1();
+
+    int amount = 10;
     double time = 0;
 
     public static void main(String[] arg){
@@ -45,6 +47,7 @@ public class CFrame extends JPanel implements ActionListener {
             r.paint(g);
         }
 
+        map1.paint(g);
 
         for(int i = 0; i < amount-1; i++){
             for(int j = i+1; j < amount; j++){
@@ -52,10 +55,10 @@ public class CFrame extends JPanel implements ActionListener {
             }
         }
 
+        int timefromcollision = 0;
         for(int i = 0; i < amount-1; i++){
             for(int j = i+1; j < amount; j++){
-//                carfovs.get(i).collision(carfovs.get(i), carfovs.get(j));
-                carfovs.get(i).collision(carfovs.get(i), carfovs.get(j), cars.get(i), cars.get(j));
+                carfovs.get(i).collision(carfovs.get(i), carfovs.get(j), cars.get(i), cars.get(j), timefromcollision);
             }
         }
 
@@ -111,7 +114,7 @@ public class CFrame extends JPanel implements ActionListener {
             lights.add(new Light());
         }
 
-        Timer t = new Timer(17, this);
+        Timer t = new Timer(170, this);
         t.restart();
 //        Timer t = new Timer();
 //        t.schedule(new addCar(), 1000);

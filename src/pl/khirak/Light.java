@@ -11,6 +11,12 @@ public class Light {
     int x = (int)(Math.random()*(600 - size));
     int y = (int)(Math.random()*(565 - size));
 
+//    public void collision(Car_Fov car_fov, int j) {
+//
+//        Rectangle c1 = new Rectangle((int)car_fov.x, (int)car_fov.y, size, size);
+//        Rectangle c2 = new Rectangle((int)light.x, (int)car2.y, size, size);
+//    }
+
     public void paint(Graphics g) {
 
         switch(color){
@@ -32,4 +38,6 @@ public class Light {
 
 //        g.setColor(Color.black);
     }
+
+
 }

@@ -60,12 +60,17 @@ public class CFrame extends JPanel implements ActionListener {
             }
         }
 
-        int timefromcollision = 0;
         for(int i = 0; i < amount-1; i++){
             for(int j = i+1; j < amount; j++){
-                carfovs.get(i).collision(carfovs.get(i), carfovs.get(j), cars.get(i), cars.get(j), timefromcollision);
+                carfovs.get(i).collision(carfovs.get(i), carfovs.get(j), cars.get(i), cars.get(j));
             }
         }
+
+//        for(int i = 0; i < amount-1; i++){
+//            for(int j = 0; j < 4; j++){
+//                lights.get(i).collision(carfovs.get(i), j);
+//            }
+//        }
 
         g.setColor(Color.black);
         g.drawLine(600, 0, 600, 600);
@@ -73,7 +78,7 @@ public class CFrame extends JPanel implements ActionListener {
         g.fillRect(601, 0, 600,600);
         g.setColor(Color.black);
         g.drawString("Cars: "+ cars.size() + "   Time: " + time, 630, 30);
-        g.drawString("Colisions: " + car.colisions, 630, 45);
+        g.drawString("Collisions: " + car.collisions, 630, 45);
 //        g.drawString("Współrzędne: " + (int)carfovs.get(0).x + " / " + (int)cars.get(0).x + "   " + (int)carfovs.get(0).y + " / " + (int)cars.get(0).y, 630, 60);
 //        g.drawString("Car_Fov.x: " + (int)carfov.x, 630, 60);
 //        g.drawString((((int)car.color_r)+" "+((int)car.color_g)+" "+((int)car.color_b)), 630, 50);
@@ -83,6 +88,9 @@ public class CFrame extends JPanel implements ActionListener {
             g.drawString(String.format("%3d: %3d, %3d",i, (int)cars.get(i).x, (int)cars.get(i).y), 630,80+15*i);
             g.setColor(new Color((int)cars.get(i).color_r, (int)cars.get(i).color_g, (int)cars.get(i).color_b));
             g.fillRect(710, 72+15*i, 10,10);
+            g.setColor(Color.black);
+            g.drawString(String.format("%3d %3d %3d",(int)cars.get(i).color_r, (int)cars.get(i).color_g, (int)cars.get(i).color_b), 730,80+15*i);
+            g.drawString(String.valueOf((int)cars.get(i).speed), 800, 80+15*i);
         }
 
     }

@@ -5,13 +5,15 @@ import java.awt.*;
 public class Car {
 
     double x, y;
-    double ax, ay;
+//    double ax, ay;
     double vx, vy;
 //    int kolor = 0;
     int size;
     double speed;
+    double speed_cpy;
     double color_r, color_g, color_b;
-    int colisions;
+    int collisions;
+    double rand_v;
 
     double speed_max = 3;
     double speed_min = 1.5;
@@ -26,33 +28,24 @@ public class Car {
 //        ay = vy / 0.017;
 
         speed = ((Math.random()*(speed_max-speed_min))+speed_min);
+        speed_cpy = speed;
+
+        color_b = (255.0/(speed_max-speed_min))*(speed_max-speed);
+        color_g = 0;
+        color_r = (255 - (int)color_b);
 
         x = (int)(Math.random()*(600-size));
         y = (int)(Math.random()*(565-size));
 
-        if(Math.random()<.25){
-            vx = -speed;
-            vy = 0;
-        }
-        else if(Math.random()<.5){
-            vx = 0;
-            vy = speed;
-        }
-        else if(Math.random()<.75){
-            vx = speed;
-            vy = 0;
-        }
-        else{
-            vx = 0;
-            vy = -speed;
-        }
+        rand_v = Math.random();
+
+        //tu było wyznaczanie prędkości, teraz jest w paint
 
 //        color_r = Math.sqrt(Math.pow(px, 2) + Math.pow(py, 2)) * 255 / 10 * size / 20;
 //        color_g = 0;
 //        color_b = (255 - color_r) * size / 20;
-        color_b = (255.0/(speed_max-speed_min))*(speed_max-Math.abs(vx+vy));
-        color_g = 0;
-        color_r = (255 - (int)color_b);
+
+        //tu były kolory, teraz są w paint
     }
 
     public void collision(Car car1, Car car2){
@@ -66,26 +59,48 @@ public class Car {
             car2.color_r = 0;
             car2.color_g = 0;
             car2.color_b = 0;
-            car1.vx = 0;
-            car1.vy = 0;
-            car2.vx = 0;
-            car2.vy = 0;
-            colisions++;
+            car1.speed = 0;
+//            car1.vy = 0;
+            car2.speed = 0;
+//            car2.vy = 0;
+            collisions++;
         }
     }
 
     public void paint(Graphics g) {
 
         g.setColor(new Color((int)color_r,(int)color_g,(int) color_b));
+//        color_b = (255.0/(speed_max-speed_min))*(speed_max-Math.abs(speed));
+//        color_g = 0;
+//        color_r = (255 - (int)color_b);
+
+        if(rand_v<.25){
+            vx = -speed;
+            vy = 0;
+        }
+        else if(rand_v<.5){
+            vx = 0;
+            vy = speed;
+        }
+        else if(rand_v<.75){
+            vx = speed;
+            vy = 0;
+        }
+        else{
+            vx = 0;
+            vy = -speed;
+        }
 
         x = x + vx;
         y = y + vy;
 
         if (x < 0 || x >= 600 - size - vx) {
-            vx = vx * (-1);
+//            vx = vx * (-1);
+            speed = speed * (-1);
         }
         if (y < 0 || y >= 565 - size - vy) {
-            vy = vy * (-1);
+//            vy = vy * (-1);
+            speed = speed * (-1);
         }
 
         g.fillRect((int)x, (int)y, size, size);

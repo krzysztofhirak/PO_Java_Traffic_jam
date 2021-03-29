@@ -34,9 +34,7 @@ public class Car_Fov {
 //                car4.vx = -car4.vx;
 //                car4.vy = -car4.vy;
             car3.speed = car3.speed/1.1;
-//            car3.vy = car3.vy/1.1;
             car4.speed = car4.speed/1.1;
-//            car4.vy = car4.vy/1.1;
 
             if(Math.abs(car3.speed) < 0.1){
                 car3.speed = 0;
@@ -46,10 +44,10 @@ public class Car_Fov {
             }
         }
         else{
-            if(car3.speed < car3.speed_cpy){
+            if(Math.abs(car3.speed) < car3.speed_cpy){
                 car3.speed = car3.speed*1.001;
             }
-            if(car4.speed < car4.speed_cpy){
+            if(Math.abs(car4.speed) < car4.speed_cpy){
                 car4.speed = car4.speed*1.001;
             }
         }

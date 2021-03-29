@@ -48,11 +48,9 @@ public class Car_Fov {
         else{
             if(car3.speed < car3.speed_cpy){
                 car3.speed = car3.speed*1.001;
-//                car3.vy = car3.vy*1;
             }
             if(car4.speed < car4.speed_cpy){
                 car4.speed = car4.speed*1.001;
-//                car3.vy = car3.vy*1;
             }
         }
     }

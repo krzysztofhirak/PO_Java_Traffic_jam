@@ -71,8 +71,18 @@ public class Car {
 
         g.setColor(new Color((int)color_r,(int)color_g,(int) color_b));
 //        color_b = (255.0/(speed_max-speed_min))*(speed_max-Math.abs(speed));
-//        color_g = 0;
-//        color_r = (255 - (int)color_b);
+//        color_b = ((-255/(speed_min-speed_max))*(Math.abs(speed)) + (0-(-255/(speed_min-speed_max))*speed_min));
+        if(Math.abs(speed) > speed_max){
+            color_r = ((-255/(0-speed_max))*(speed_max) + (0-(-255/(0-speed_max))*0));
+            color_g = 0;
+            color_b = (255 - (int)color_r);
+        }
+        else{
+            color_r = ((-255/(0-speed_max))*(Math.abs(speed)) + (0-(-255/(0-speed_max))*0));
+            color_g = 0;
+            color_b = (255 - (int)color_r);
+        }
+
 
         if(rand_v<.25){
             vx = -speed;
@@ -97,10 +107,14 @@ public class Car {
         if (x < 0 || x >= 600 - size - vx) {
 //            vx = vx * (-1);
             speed = speed * (-1);
+//            vx *= (-1);
+//            vy *= (-1);
         }
         if (y < 0 || y >= 565 - size - vy) {
 //            vy = vy * (-1);
             speed = speed * (-1);
+//            vx *= (-1);
+//            vy *= (-1);
         }
 
         g.fillRect((int)x, (int)y, size, size);

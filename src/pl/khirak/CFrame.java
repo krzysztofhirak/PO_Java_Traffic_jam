@@ -90,7 +90,7 @@ public class CFrame extends JPanel implements ActionListener {
             g.fillRect(710, 72+15*i, 10,10);
             g.setColor(Color.black);
             g.drawString(String.format("%3d %3d %3d",(int)cars.get(i).color_r, (int)cars.get(i).color_g, (int)cars.get(i).color_b), 730,80+15*i);
-            g.drawString(String.valueOf((int)cars.get(i).speed), 800, 80+15*i);
+            g.drawString(String.valueOf(cars.get(i).speed), 800, 80+15*i);
         }
 
     }
